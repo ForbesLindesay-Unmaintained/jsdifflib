@@ -182,6 +182,7 @@ var difflib = module.exports = {
             j = jdict[jkey];
             if (j < blo) continue;
             if (j >= bhi) break;
+            var k;
             newj2len[j] = k = difflib.__dictget(j2len, j - 1, 0) + 1;
             if (k > bestsize) {
               besti = i - k + 1;
