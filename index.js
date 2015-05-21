@@ -28,10 +28,10 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 ***/
 /* Author: Chas Emerick <cemerick@snowtide.com> */
-__whitespace = {" ":true, "\t":true, "\n":true, "\f":true, "\r":true};
 
 var difflib = module.exports = {
   defaultJunkFunction: function (c) {
+    var __whitespace = {" ":true, "\t":true, "\n":true, "\f":true, "\r":true};
     return __whitespace.hasOwnProperty(c);
   },
   
@@ -249,7 +249,8 @@ var difflib = module.exports = {
       
       matching_blocks.sort(difflib.__ntuplecomp);
   
-      var i1 = j1 = k1 = block = 0;
+      var i1, j1, k1, block;
+      i1 = j1 = k1 = block = 0;
       var non_adjacent = [];
       for (var idx in matching_blocks) {
         if (matching_blocks.hasOwnProperty(idx)) {
@@ -517,8 +518,8 @@ var difflib = module.exports = {
     }
     
     for (var idx = 0; idx < opcodes.length; idx++) {
-      code = opcodes[idx];
-      change = code[0];
+      var code = opcodes[idx];
+      var change = code[0];
       var b = code[1];
       var be = code[2];
       var n = code[3];
