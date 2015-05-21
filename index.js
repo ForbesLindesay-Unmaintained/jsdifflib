@@ -256,9 +256,9 @@ var difflib = module.exports = {
       for (var idx in matching_blocks) {
         if (matching_blocks.hasOwnProperty(idx)) {
           block = matching_blocks[idx];
-          i2 = block[0];
-          j2 = block[1];
-          k2 = block[2];
+          var i2 = block[0];
+          var j2 = block[1];
+          var k2 = block[2];
           if (i1 + k1 == i2 && j1 + k1 == j2) {
             k1 += k2;
           } else {
