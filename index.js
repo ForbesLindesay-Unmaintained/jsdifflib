@@ -28,10 +28,10 @@ ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF S
 DAMAGE.
 ***/
 /* Author: Chas Emerick <cemerick@snowtide.com> */
-__whitespace = {" ":true, "\t":true, "\n":true, "\f":true, "\r":true};
 
 var difflib = module.exports = {
   defaultJunkFunction: function (c) {
+    var __whitespace = {" ":true, "\t":true, "\n":true, "\f":true, "\r":true};
     return __whitespace.hasOwnProperty(c);
   },
   
@@ -182,6 +182,7 @@ var difflib = module.exports = {
             j = jdict[jkey];
             if (j < blo) continue;
             if (j >= bhi) break;
+            var k;
             newj2len[j] = k = difflib.__dictget(j2len, j - 1, 0) + 1;
             if (k > bestsize) {
               besti = i - k + 1;
@@ -249,14 +250,15 @@ var difflib = module.exports = {
       
       matching_blocks.sort(difflib.__ntuplecomp);
   
-      var i1 = j1 = k1 = block = 0;
+      var i1, j1, k1, block;
+      i1 = j1 = k1 = block = 0;
       var non_adjacent = [];
       for (var idx in matching_blocks) {
         if (matching_blocks.hasOwnProperty(idx)) {
           block = matching_blocks[idx];
-          i2 = block[0];
-          j2 = block[1];
-          k2 = block[2];
+          var i2 = block[0];
+          var j2 = block[1];
+          var k2 = block[2];
           if (i1 + k1 == i2 && j1 + k1 == j2) {
             k1 += k2;
           } else {
@@ -517,8 +519,8 @@ var difflib = module.exports = {
     }
     
     for (var idx = 0; idx < opcodes.length; idx++) {
-      code = opcodes[idx];
-      change = code[0];
+      var code = opcodes[idx];
+      var change = code[0];
       var b = code[1];
       var be = code[2];
       var n = code[3];
